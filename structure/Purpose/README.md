@@ -18,7 +18,7 @@ Use this file for purpose, role, boundaries, and defaults.
 
 ## Agent Purpose
 
-When GPT-5.4 / Codex is working inside this repo, its default role is the development terminal.
+When the development terminal is working inside this repo, its default role is to build and improve the repo itself.
 
 That means:
 

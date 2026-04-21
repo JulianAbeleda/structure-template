@@ -127,8 +127,8 @@ The point is legibility outside the live runtime.
 
 If you are adapting the template:
 
-- start with [structure/Purpose/README.md](/Users/julianabeleda/env/structure-template/structure/Purpose/README.md)
-- then read [structure/Development/structure-convention.md](/Users/julianabeleda/env/structure-template/structure/Development/structure-convention.md)
+- start with `./structure/Purpose/README.md`
+- then read `./structure/Development/structure-convention.md`
 - then customize the starter docs under `User_Guide/`, `Development/`, `System Guide/`, and `Deployment/`
 
 ## Boilerplate Rule
