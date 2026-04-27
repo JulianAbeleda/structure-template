@@ -9,6 +9,7 @@ It defines:
 - the default `structure/` folder shape
 - the purpose of each layer
 - the boilerplate-ready templates for those layers
+- the beginner workflow for using LLMs with a project
 - the conventions for keeping project docs model-agnostic and human-readable
 
 Use this repo when you want to:
@@ -49,6 +50,7 @@ Other repos may adapt the template, but this repo should define the canonical pa
 The core template is:
 
 - `structure/INDEX.md`
+- `structure/HOW_TO_USE.md`
 - `structure/Purpose/README.md`
 - `structure/User_Guide/README.md`
 - `structure/Development/README.md`
@@ -59,7 +61,9 @@ Projects can add more folders, but these are the load-bearing defaults.
 
 Starter boilerplate is included for:
 
+- `HOW_TO_USE.md`
 - `Purpose/README.md`
+- `Purpose/examples/dev-audit-loop.md`
 - `User_Guide/getting-started.md`
 - `Development/coding-principles.md`
 - `Development/release-strategy.md`
@@ -74,8 +78,11 @@ Starter boilerplate is included for:
 ```text
 structure/
   INDEX.md
+  HOW_TO_USE.md
   Purpose/
     README.md
+    examples/
+      dev-audit-loop.md
   User_Guide/
     README.md
     getting-started.md
@@ -118,18 +125,22 @@ The point is legibility outside the live runtime.
 ## Quick Start
 
 1. Copy the `structure/` folder into a new repo.
-2. Replace placeholders in `Purpose/README.md`.
-3. Fill in `User_Guide/getting-started.md` with the shortest local setup path.
-4. Fill in `System Guide/architecture.md` with the durable system shape.
-5. Add project-specific files only after the default layers are clear.
+2. Read `structure/HOW_TO_USE.md`.
+3. Replace placeholders in `Purpose/README.md`.
+4. Fill in `User_Guide/getting-started.md` with the shortest local setup path.
+5. Fill in `System Guide/architecture.md` with the durable system shape.
+6. Add project-specific files only after the default layers are clear.
 
 ## Where To Start
 
 If you are adapting the template:
 
-- start with `./structure/Purpose/README.md`
+- start with `./structure/HOW_TO_USE.md`
+- then read `./structure/Purpose/README.md`
 - then read `./structure/Development/structure-convention.md`
 - then customize the starter docs under `User_Guide/`, `Development/`, `System Guide/`, and `Deployment/`
+
+If you want to understand the LLM workflow quickly, read `./structure/Purpose/examples/dev-audit-loop.md`.
 
 ## Boilerplate Rule
 

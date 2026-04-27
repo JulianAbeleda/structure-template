@@ -12,7 +12,7 @@ It exists so project logic, release thinking, implementation rules, and workflow
 - release strategy
 - roadmap
 - security principles
-- next-session context
+- handoff context
 - project-specific scaffolds and conventions
 
 ## Rule

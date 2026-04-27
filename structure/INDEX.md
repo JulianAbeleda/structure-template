@@ -6,15 +6,24 @@ Human-facing layer. Model-agnostic. Not runtime internals.
 
 ## First Pointer
 
+If you are new to this structure, start with `HOW_TO_USE.md`.
+
 If the goal is fast role alignment for a model or operator, start with `Purpose/`.
 
-- `Purpose/README.md` — shortest statement of system purpose, repo purpose, agent role, workflow split, and boundaries
+- `HOW_TO_USE.md` — plain-English workflow and reader paths
+- `Purpose/README.md` — project-agnostic boot layer for orienting LLMs
+- `Purpose/boot-protocol.md` — model boot order and authority ladder
+- `Purpose/control-plane.md` — model-to-role assignment and swapping
+- `Purpose/delegation-contract.md` — task packets, handoffs, and done criteria
+- `Purpose/roles.md` — two-role registry for Development Agent and Audit Agent
+- `Purpose/examples/dev-audit-loop.md` — worked example of the development-to-audit loop
 
 ## Default Project Layers
 
 The portable `structure/` defaults are:
 
 - `INDEX.md`
+- `HOW_TO_USE.md`
 - `Purpose/`
 - `User_Guide/`
 - `Development/`

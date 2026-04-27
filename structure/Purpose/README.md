@@ -1,79 +1,94 @@
 # Purpose
 
-Short orientation layer for `<PROJECT>`.
+Project-agnostic boot layer for orienting LLMs.
 
-Read this first when the goal is fast role alignment rather than step-by-step operation.
+Read this first when the goal is to give a model a clear role before it starts work. This folder should answer three questions:
 
-Use `User_Guide/` for procedures.
-Use `Development/` for building the repo.
-Use this file for purpose, role, boundaries, and defaults.
+1. What is this project?
+2. What role should this LLM occupy?
+3. What boundaries apply before it touches project-specific systems?
 
-## System Purpose
+Use `boot-protocol.md` for the role-selection process.
+Use `control-plane.md` for model-to-role assignment and swapping.
+Use `delegation-contract.md` for task packets, handoffs, and done criteria.
+Use `roles.md` for the role registry.
+Use `User_Guide/` for procedures after orientation.
+Use `Development/` for building or changing the project.
 
-`<Describe what the system/product/project is at the highest level.>`
+The active role set is intentionally small: `Development Agent` and `Audit Agent`.
 
-## Repo Purpose
+## Purpose of This Layer
 
-`<Describe what this repo exists to build, ship, or operate.>`
+`structure/Purpose/` is not a runtime and not an execution system.
 
-## Agent Purpose
+It is a boot surface: a small, stable place where an LLM can discover how it should enter the project.
 
-When the development terminal is working inside this repo, its default role is to build and improve the repo itself.
+The design should remain portable across projects. A project may have state files, scripts, agents, build tools, deployment systems, automation, or none of those. This layer should still work because it describes roles and boundaries before project-specific machinery is activated.
 
-That means:
+## Project Purpose
 
-- read the code and docs
-- implement changes
-- refactor when needed
-- improve structure and architecture
-- handle repo-specific implementation or release work when asked
+State the concrete project purpose in the project index or system guide.
 
-Its role is not to `<common confusion 1>` and not to `<common confusion 2>` by default.
+This folder should not carry a project-specific operating thesis unless the project has no better home for it.
 
-## Workflow Split
+The portable pattern is:
 
-`<State the intended role split across tools, terminals, or operators.>`
+- `structure/` explains the project for humans and models
+- `Purpose/` routes an LLM into a clear boot role
+- `User_Guide/` explains how to operate the project
+- `Development/` explains how to change the project
+- project-specific runtime, memory, deployment, or automation layers are named by that project
 
-If the roles drift, reset to this split.
+## LLM Boot Rule
 
-## Default Behavior
+An LLM entering a project should not infer its role from model identity alone.
 
-If working as the development terminal:
+Role is selected from:
 
-- `<default behavior 1>`
-- `<default behavior 2>`
-- `<default behavior 3>`
-- `<default behavior 4>`
+- the user's request
+- the available tools
+- the project context
+- the session or terminal assignment
+- the authority explicitly granted
 
-## Boundaries
+After reading this folder, the LLM should be able to state:
 
-Do not confuse these things:
+- its selected role
+- why that role fits the request
+- what it is allowed to touch
+- what it should not do by default
 
-- `<layer 1>`
-- `<layer 2>`
-- `<layer 3>`
+## Default Boundary
 
-`<One short paragraph on what this repo should not absorb or impersonate.>`
+`structure/` provides orientation.
+
+Project-specific execution layers provide execution authority.
+
+Runtime, memory, deployment, and automation layers are not generic LLM boot requirements. They only become relevant when the selected role needs them.
 
 ## Anti-Goals
 
-Do not default to:
+Do not use this layer to:
 
-- `<anti-goal 1>`
-- `<anti-goal 2>`
-- `<anti-goal 3>`
-- `<anti-goal 4>`
+- define every project procedure
+- duplicate runtime contracts
+- make one model brand the default role
+- collapse operator, runtime, development, and audit into one agent
+- treat project-specific execution systems as part of the generic structure scaffold
 
 ## Quick Pointers
 
-If you want quick role alignment, say:
+For role selection:
 
-- `structure/Purpose/`
+- `boot-protocol.md`
+- `control-plane.md`
+- `delegation-contract.md`
+- `roles.md`
 
-If you want setup or operating steps, say:
+For project procedures:
 
-- `structure/User_Guide/`
+- `../User_Guide/`
 
-If you want build strategy or implementation guidance, say:
+For project development:
 
-- `structure/Development/`
+- `../Development/`
