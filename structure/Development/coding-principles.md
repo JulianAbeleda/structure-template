@@ -110,6 +110,118 @@ Bad orthogonality means:
 - side effects that leak across the system without a clear boundary
 - a refactor in one subsystem forcing incidental edits in many others
 
+## Implementation Principles
+
+These principles are extracted from mature systems codebases and should apply across languages.
+
+### Encode Invariants
+
+Make invalid states hard to represent.
+
+Use types, schemas, constructors, state machines, and validation boundaries to express system invariants directly.
+
+Do not rely on comments, naming, or caller discipline for rules the code can encode.
+
+Prefer:
+
+- typed states over stringly-typed status values
+- constructors that validate durable objects
+- narrow public APIs around sensitive state transitions
+- explicit capability or permission values instead of ambient access
+- machine-readable contracts when humans and tools both depend on the rule
+
+### Keep Public Surfaces Boring
+
+Hide internal complexity behind stable, ordinary interfaces.
+
+The more complex the implementation, the simpler the caller-facing surface should be.
+
+Prefer:
+
+- small entry points
+- obvious names
+- predictable return values
+- feature flags or configuration that expose real choices, not internal machinery
+- documentation that explains tradeoffs without requiring the reader to learn the whole subsystem
+
+### Separate Ergonomics From Semantics
+
+Convenience should not blur what the system means.
+
+Ergonomic helpers are good when they preserve the same failure modes, authority boundaries, and data model as the lower-level API.
+
+Avoid helpers that:
+
+- skip validation
+- hide ownership of state
+- swallow meaningful errors
+- make a policy decision look like a formatting or transport detail
+- create a second unofficial way to perform the same operation
+
+### Treat Errors As System Information
+
+Errors should preserve both machine-actionable structure and human-useful context.
+
+Application code may use broad error types when the caller only needs context and exit behavior.
+
+Library, protocol, storage, and integration boundaries should expose errors precise enough for callers to make decisions.
+
+Every error path should answer:
+
+1. What failed?
+2. Where did it fail?
+3. Is the failure recoverable?
+4. Does the caller need a typed distinction?
+5. What context would the operator need during debugging?
+
+### Contain Dangerous Power
+
+Unsafe operations, direct system calls, global state, unchecked casts, raw concurrency primitives, and destructive side effects must be isolated behind small reviewed boundaries.
+
+The boundary should document:
+
+- what invariant makes the operation valid
+- who is allowed to call it
+- what state it may mutate
+- what tests, assertions, or runtime checks defend it
+
+Do not spread privileged operations through convenience helpers.
+
+### Design For Replacement
+
+External services, storage backends, model providers, runtimes, and platform-specific integrations should sit behind replaceable adapters.
+
+Replacement does not mean pretending every backend is identical.
+
+It means:
+
+- shared policy lives above the adapter
+- backend-specific behavior stays inside the adapter
+- capability differences are explicit
+- tests can exercise the contract without depending on every real backend
+
+### Test Behavior At The Boundary
+
+Unit tests are not enough for code whose risk lives at integration boundaries.
+
+Use the cheapest test that can catch the real failure mode.
+
+Prefer:
+
+- small unit tests for pure logic
+- regression tests for fixed bugs
+- integration tests for command, API, storage, and adapter behavior
+- property or fuzz tests for parsers, protocol handling, and state transitions
+- concurrency stress tests where ordering matters
+
+### Explain Tradeoffs Close To The Code
+
+When code chooses performance, compatibility, portability, simplicity, or strict correctness over another value, explain that choice near the implementation.
+
+Good comments explain why the shape exists.
+
+Bad comments restate what the code already says.
+
 ## Anti-Patterns
 
 Avoid:
@@ -121,6 +233,11 @@ Avoid:
 - modules that own both policy and every downstream implementation detail
 - abstractions that make the surface more confusing instead of simpler
 - subsystem coupling that makes independent changes impossible
+- convenience APIs that bypass canonical validation
+- broad error handling at boundaries where callers need typed decisions
+- privileged operations scattered through ordinary business logic
+- adapters that quietly redefine shared policy
+- tests that only confirm implementation details while missing boundary behavior
 
 ## Commit Discipline
 
@@ -167,5 +284,9 @@ Before merging new code, ask:
 6. If this integration changes, is there one place to update it?
 7. Is the commit message prefixed with the owning subsystem?
 8. If this is NFC, is it free of behavior changes?
+9. Did the code encode the invariant instead of relying on caller discipline?
+10. Are dangerous operations contained behind a small boundary?
+11. Does the error shape match what the caller needs to know?
+12. Is the behavior tested at the boundary where it can actually fail?
 
 If those answers are unclear, the code is not shaped correctly yet.
