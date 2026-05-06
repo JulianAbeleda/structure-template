@@ -9,6 +9,7 @@ This file defines the default `structure/` pattern.
 - `Development/`
 - `System Guide/`
 - `Deployment/`
+- `cache/`
 
 ## Folder Roles
 
@@ -46,6 +47,14 @@ This file defines the default `structure/` pattern.
 - environment/deployment target notes
 - production runbooks when needed
 
+`cache/`
+
+- compact repo orientation
+- source map and stable implementation facts
+- modular notes loaded only for relevant tasks
+- token-saving context before broad code inspection
+- not runtime memory, copied chat, local logs, or secrets
+
 ## Boilerplate Rule
 
 This structure should be safe to copy into a new repo without bringing along personal, company-specific, or project-specific assumptions.
@@ -55,4 +64,5 @@ When creating boilerplate:
 - replace named people with roles
 - replace product-specific claims with placeholders
 - replace local paths with neutral examples where possible
+- replace repo-cache placeholders with project-specific facts or leave them empty
 - keep the pattern, not the biography

@@ -29,8 +29,11 @@ The portable `structure/` defaults are:
 - `Development/`
 - `System Guide/`
 - `Deployment/`
+- `cache/`
 
 These are the load-bearing human layers.
+
+`cache/` is optional but recommended when agents repeatedly need the same repo orientation. It should stay compact, modular, and free of secrets or transient session state.
 
 ## Rule
 
