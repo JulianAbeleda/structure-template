@@ -9,6 +9,7 @@ It exists so project logic, release thinking, implementation rules, and workflow
 ## Use This Folder For
 
 - coding principles
+- benchmark and evaluator harness principles
 - release strategy
 - roadmap
 - security principles
@@ -26,3 +27,4 @@ Use `Purpose/` for role alignment.
 
 - `purpose-template.md` — canonical scaffold for `structure/Purpose/README.md`
 - `structure-convention.md` — default folder pattern and what each layer is for
+- `harness-principles.md` — portable benchmark/evaluator harness contract

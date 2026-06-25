@@ -66,6 +66,7 @@ Starter boilerplate is included for:
 - `Purpose/examples/dev-audit-loop.md`
 - `User_Guide/getting-started.md`
 - `Development/coding-principles.md`
+- `Development/harness-principles.md`
 - `Development/release-strategy.md`
 - `Development/roadmap.md`
 - `Development/purpose-template.md`
@@ -89,6 +90,7 @@ structure/
   Development/
     README.md
     coding-principles.md
+    harness-principles.md
     release-strategy.md
     roadmap.md
     purpose-template.md
