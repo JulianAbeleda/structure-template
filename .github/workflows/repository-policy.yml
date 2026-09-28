@@ -1,0 +1,44 @@
+name: Repository policy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  repository-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select commit range
+        id: range
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
+        run: |
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            echo "value=origin/$BASE_REF..HEAD" >> "$GITHUB_OUTPUT"
+          elif git cat-file -e "$BEFORE_SHA^{commit}" 2>/dev/null; then
+            echo "value=$BEFORE_SHA..$CURRENT_SHA" >> "$GITHUB_OUTPUT"
+          else
+            echo "value=HEAD^..HEAD" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check commit subjects
+        run: python3 scripts/check-commit-message.py --range '${{ steps.range.outputs.value }}'
+
+      - name: Check repository size
+        run: python3 sz.py --check
+
+      - name: Test repository tools
+        run: python3 -m unittest discover -s tests -v

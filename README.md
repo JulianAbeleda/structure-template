@@ -66,6 +66,7 @@ Starter boilerplate is included for:
 - `Purpose/examples/dev-audit-loop.md`
 - `User_Guide/getting-started.md`
 - `Development/coding-principles.md`
+- `Development/repository-automation.md`
 - `Development/harness-principles.md`
 - `Development/release-strategy.md`
 - `Development/roadmap.md`
@@ -90,6 +91,8 @@ structure/
   Development/
     README.md
     coding-principles.md
+    repository-automation.md
+    repository-policy.json
     harness-principles.md
     release-strategy.md
     roadmap.md
@@ -132,6 +135,8 @@ The point is legibility outside the live runtime.
 4. Fill in `User_Guide/getting-started.md` with the shortest local setup path.
 5. Fill in `System Guide/architecture.md` with the durable system shape.
 6. Add project-specific files only after the default layers are clear.
+7. Customize `Development/repository-policy.json`, then run
+   `scripts/install-hooks.sh` if you want the included commit and size checks.
 
 ## Where To Start
 
@@ -143,6 +148,9 @@ If you are adapting the template:
 - then customize the starter docs under `User_Guide/`, `Development/`, `System Guide/`, and `Deployment/`
 
 If you want to understand the LLM workflow quickly, read `./structure/Purpose/examples/dev-audit-loop.md`.
+
+If you want consistent commits and a reusable source-size budget, read
+`./structure/Development/repository-automation.md`.
 
 ## Boilerplate Rule
 

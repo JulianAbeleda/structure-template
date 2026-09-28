@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+
+if [ -x "$repo_root/scripts/check-full.sh" ]; then
+  exec "$repo_root/scripts/check-full.sh"
+fi
+
+if [ -f "$repo_root/sz.py" ]; then
+  exec python3 "$repo_root/sz.py" --check
+fi

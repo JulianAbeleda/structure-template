@@ -1,0 +1,111 @@
+{
+  "commit": {
+    "areas": [
+      "api",
+      "app",
+      "build",
+      "ci",
+      "cli",
+      "core",
+      "data",
+      "docs",
+      "infra",
+      "repo",
+      "runtime",
+      "security",
+      "test",
+      "ui"
+    ],
+    "subject_max_length": 100,
+    "allow_generated_merge_and_revert_subjects": true
+  },
+  "size": {
+    "review_threshold": 40000,
+    "hard_limit": 50000,
+    "file_limit": 2000,
+    "extensions": [
+      ".c",
+      ".cc",
+      ".cpp",
+      ".cs",
+      ".css",
+      ".go",
+      ".h",
+      ".hpp",
+      ".html",
+      ".java",
+      ".js",
+      ".jsx",
+      ".kt",
+      ".kts",
+      ".m",
+      ".mm",
+      ".php",
+      ".py",
+      ".rb",
+      ".rs",
+      ".sh",
+      ".swift",
+      ".ts",
+      ".tsx"
+    ],
+    "ignored_directories": [
+      ".cache",
+      ".git",
+      ".mypy_cache",
+      ".pytest_cache",
+      ".ruff_cache",
+      ".venv",
+      "__pycache__",
+      "build",
+      "coverage",
+      "dist",
+      "generated",
+      "node_modules",
+      "target",
+      "third_party",
+      "vendor",
+      "venv"
+    ],
+    "surfaces": [
+      {
+        "name": "tests",
+        "patterns": [
+          "test/**",
+          "tests/**",
+          "**/test/**",
+          "**/tests/**",
+          "**/test_*.*",
+          "**/*_test.*",
+          "**/*.spec.*",
+          "**/*.test.*"
+        ],
+        "limit": 30000
+      },
+      {
+        "name": "tooling",
+        "patterns": [
+          ".github/**",
+          ".githooks/**",
+          "scripts/**",
+          "tools/**",
+          "build.rs",
+          "sz.py"
+        ],
+        "limit": 10000
+      },
+      {
+        "name": "source",
+        "patterns": [
+          "app/**",
+          "cmd/**",
+          "crates/**",
+          "lib/**",
+          "packages/**",
+          "src/**"
+        ],
+        "limit": 40000
+      }
+    ]
+  }
+}

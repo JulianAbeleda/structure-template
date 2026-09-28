@@ -1,0 +1,12 @@
+#!/bin/sh
+set -eu
+
+repo_root=$(git rev-parse --show-toplevel)
+
+if [ -f "$repo_root/sz.py" ]; then
+  python3 "$repo_root/sz.py" --check
+fi
+
+if [ -x "$repo_root/scripts/check-fast.sh" ]; then
+  exec "$repo_root/scripts/check-fast.sh"
+fi

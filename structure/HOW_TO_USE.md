@@ -11,6 +11,8 @@ The short version:
 5. Put deployment and release steps in `Deployment/`.
 6. Use `Purpose/` when you want an LLM to enter the project with a clear role.
 7. Use `cache/` when you want compact repo context before broad source inspection.
+8. Use `Development/repository-policy.json` with the included hooks when commit
+   subjects and source-size budgets should be machine-enforced.
 
 ## What This Is For
 
@@ -65,12 +67,14 @@ Start here if you are integrating this into an existing repo or team workflow.
 
 1. Read `Development/structure-convention.md`.
 2. Customize `Development/coding-principles.md`.
-3. Fill `cache/repo-cache.md` and `cache/repo-map.md` if repeated agent work would otherwise rediscover the repo each session.
-4. Add focused files under `cache/module-notes/` for stable, task-specific areas.
-5. Fill `Purpose/control-plane.md` with project-appropriate assignments only if persistent routing is needed.
-6. Add optional model profiles under `Purpose/agents/`.
-7. Keep role contracts in `Purpose/roles.md` model-agnostic.
-8. Keep task and handoff formats in `Purpose/delegation-contract.md`.
+3. Customize `Development/repository-policy.json` and run
+   `scripts/install-hooks.sh` if adopting the repository checks.
+4. Fill `cache/repo-cache.md` and `cache/repo-map.md` if repeated agent work would otherwise rediscover the repo each session.
+5. Add focused files under `cache/module-notes/` for stable, task-specific areas.
+6. Fill `Purpose/control-plane.md` with project-appropriate assignments only if persistent routing is needed.
+7. Add optional model profiles under `Purpose/agents/`.
+8. Keep role contracts in `Purpose/roles.md` model-agnostic.
+9. Keep task and handoff formats in `Purpose/delegation-contract.md`.
 
 The main engineering rule is separation of authority: roles, models, assignments, and tasks should remain separate files.
 

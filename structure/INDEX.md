@@ -17,6 +17,7 @@ If the goal is fast role alignment for a model or operator, start with `Purpose/
 - `Purpose/delegation-contract.md` — task packets, handoffs, and done criteria
 - `Purpose/roles.md` — two-role registry for Development Agent and Audit Agent
 - `Purpose/examples/dev-audit-loop.md` — worked example of the development-to-audit loop
+- `Development/repository-automation.md` — reusable commit hooks and source-size checks
 
 ## Default Project Layers
 

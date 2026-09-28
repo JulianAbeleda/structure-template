@@ -13,6 +13,7 @@ It exists so project logic, release thinking, implementation rules, and workflow
 - release strategy
 - roadmap
 - security principles
+- repository automation, commit policy, and source-size budgets
 - handoff context
 - project-specific scaffolds and conventions
 
@@ -28,3 +29,5 @@ Use `Purpose/` for role alignment.
 - `purpose-template.md` — canonical scaffold for `structure/Purpose/README.md`
 - `structure-convention.md` — default folder pattern and what each layer is for
 - `harness-principles.md` — portable benchmark/evaluator harness contract
+- `repository-automation.md` — installable Git hooks and generic `sz.py` usage
+- `repository-policy.json` — commit areas and source-size budget authority

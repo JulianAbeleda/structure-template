@@ -352,7 +352,7 @@ Use the subsystem that owns the behavior being changed. Documentation-only chang
 Non-functional changes must be marked as NFC:
 
 ```text
-[runtime] NFC — extract preflight helper
+[runtime] NFC - extract preflight helper
 ```
 
 Do not mix NFC refactors with behavior changes. If a cleanup enables a functional fix, split it into separate commits.
@@ -365,7 +365,9 @@ Examples:
 [docs] document commit discipline
 ```
 
-If the project has a commit-message checker, use that checker as the machine-enforced version of this rule.
+The template includes a commit-message checker and installable hooks. Customize
+the areas in `repository-policy.json`, then follow `repository-automation.md` to
+make this rule machine-enforced locally and in CI.
 
 Malformed commits:
 
