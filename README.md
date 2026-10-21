@@ -67,6 +67,7 @@ Starter boilerplate is included for:
 - `User_Guide/getting-started.md`
 - `Development/coding-principles.md`
 - `Development/repository-automation.md`
+- `Development/sz.md`
 - `Development/harness-principles.md`
 - `Development/release-strategy.md`
 - `Development/roadmap.md`
@@ -93,6 +94,7 @@ structure/
     coding-principles.md
     repository-automation.md
     repository-policy.json
+    sz.md
     harness-principles.md
     release-strategy.md
     roadmap.md
@@ -150,7 +152,8 @@ If you are adapting the template:
 If you want to understand the LLM workflow quickly, read `./structure/Purpose/examples/dev-audit-loop.md`.
 
 If you want consistent commits and a reusable source-size budget, read
-`./structure/Development/repository-automation.md`.
+`./structure/Development/repository-automation.md`. For a one-page overview
+of the size check, read `./structure/Development/sz.md`.
 
 ## Boilerplate Rule
 

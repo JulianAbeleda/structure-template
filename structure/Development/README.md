@@ -30,4 +30,5 @@ Use `Purpose/` for role alignment.
 - `structure-convention.md` — default folder pattern and what each layer is for
 - `harness-principles.md` — portable benchmark/evaluator harness contract
 - `repository-automation.md` — installable Git hooks and generic `sz.py` usage
+- `sz.md` — high-level overview of what `sz.py` measures and enforces
 - `repository-policy.json` — commit areas and source-size budget authority
